@@ -1,0 +1,48 @@
+<div class="row">
+   <h1>Webbutveckling år 2</h1>
+</div>
+<section>
+   <div class="row">
+      <h2>Avslutade kurser</h2>
+      <% if(courses != '') { %>
+         <table>
+            <tr>
+               <th>Kurskod</th>
+               <th>Namn</th>
+               <th>Period</th>
+               <th>Läs mer</th>
+               <th>Radera</th>
+            </tr>
+            <% for (var i = 0; i < courses.length; i++) { %>
+            <tr>
+               <td><%- courses[i].courseId %></td>
+               <td><%- courses[i].courseName %></td>
+               <td><%- courses[i].coursePeriod %></td>
+               <td><a href="course/<%- courses[i]._id %>">Läs mer</a></td>
+               <td><a class="button delete" href="/delete/<%- courses[i]._id %>">Radera</a></td>
+            </tr>
+            <% } %> 
+         </table> 
+      <% } %>    
+   </div>
+</section>
+
+<section>
+   <div class="form-row">
+      <h2>Lägg till kurs</h2>
+    
+         <form action="/" enctype="multipart/form-data" method="POST">
+   
+            <label for="courseId" class="form-label">Kurskod</label><br>
+            <input type="text" name="courseId" id="courseId"><br>
+            <label for="courseName" class="form-label">Namn</label><br>
+            <input type="text" name="courseName" id="courseName"><br>
+            <label for="coursePeriod" class="form-label">Period</label><br>
+            <input type="text" name="coursePeriod" id="coursePeriod"><br>
+            <button type="submit" class="btn btn-primary">Lägg till</button>
+   
+   
+         </form>
+   </div>
+</section>
+
